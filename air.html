@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air India - Fly with Pride & Elegance</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter & Playfair Display for Royalty touch) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#E11B22',
+                            darkRed: '#A80E13',
+                            navy: '#0B1B3D',
+                            deepPurple: '#130C2E',
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                            lightBg: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    boxShadow: {
+                        'glow-red': '0 0 25px rgba(225, 27, 34, 0.35)',
+                        'glow-gold': '0 0 20px rgba(212, 175, 55, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(11, 27, 61, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism & Custom Styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(11, 27, 61, 0.85) 0%, rgba(19, 12, 46, 0.75) 50%, rgba(225, 27, 34, 0.65) 100%);
+        }
+        .gradient-gold-text {
+            background: linear-gradient(135deg, #FFF0B8 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E11B22;
+            border-radius: 99px;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.02); }
+        }
+        .pulse-badge {
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-brand-red selection:text-white custom-scrollbar">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-gradient-to-r from-brand-deepPurple via-brand-navy to-brand-deepPurple text-white text-xs py-2.5 px-4 relative z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3 overflow-hidden">
+                <span class="bg-gradient-to-r from-brand-red to-rose-600 text-white text-[10px] uppercase font-extrabold px-2.5 py-0.5 rounded-full tracking-wider shadow-sm pulse-badge">
+                    ★ A350 Flagship
+                </span>
+                <p class="truncate font-medium text-slate-200">
+                    Fly non-stop to London, Delhi, and New York on our luxury Airbus A350 with private suites!
+                </p>
+            </div>
+            <div class="hidden lg:flex items-center space-x-6 text-xs text-slate-300 font-medium">
+                <a href="#status" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-plane-circle-check text-brand-gold"></i> Flight Status
+                </a>
+                <a href="#help" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-headset text-brand-gold"></i> Customer Support
+                </a>
+                <div class="flex items-center gap-1.5 cursor-pointer hover:text-brand-gold transition" id="langSelector">
+                    <i class="fa-solid fa-globe text-brand-gold"></i>
+                    <span>IN | EN | ₹ (INR)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo & Star Alliance tag -->
+                <a href="#" class="flex items-center space-x-3.5 group">
+                    <div class="w-11 h-11 bg-gradient-to-tr from-brand-darkRed via-brand-red to-rose-500 rounded-xl flex items-center justify-center text-white font-black text-2xl shadow-glow-red transform -skew-x-6 group-hover:scale-105 transition-transform duration-300">
+                        AI
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black tracking-wider text-brand-navy uppercase leading-none font-serif group-hover:text-brand-red transition-colors">AIR INDIA</span>
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-brand-gold font-bold mt-1">A Star Alliance Member</span>
+                    </div>
+                </a>
+
+                <!-- Nav Links -->
+                <nav class="hidden lg:flex items-center space-x-8 font-semibold text-sm text-slate-700">
+                    <a href="#book" class="hover:text-brand-red transition py-2 border-b-2 border-transparent hover:border-brand-red">Book & Manage</a>
+                    <a href="#destinations" class="hover:text-brand-red transition py-2 border-b-2 border-transparent hover:border-brand-red">Where We Fly</a>
+                    <a href="#flying-returns" class="hover:text-brand-red transition py-2 border-b-2 border-transparent hover:border-brand-red flex items-center gap-1">
+                        <span>Flying Returns</span>
+                        <span class="bg-brand-gold/20 text-yellow-800 text-[10px] px-1.5 py-0.5 rounded font-bold">New</span>
+                    </a>
+                    <a href="#offers" class="hover:text-brand-red transition py-2 border-b-2 border-transparent hover:border-brand-red">Special Offers</a>
+                    <a href="#experience" class="hover:text-brand-red transition py-2 border-b-2 border-transparent hover:border-brand-red">Inflight Luxury</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <button onclick="toggleModal('loginModal')" class="flex items-center space-x-2 text-brand-navy border border-slate-300 hover:border-brand-navy px-4 py-2.5 rounded-xl font-semibold text-xs uppercase tracking-wider transition hover:bg-slate-50 shadow-sm">
+                        <i class="fa-solid fa-user-check text-brand-red"></i>
+                        <span>Sign In</span>
+                    </button>
+                    <a href="#book" class="bg-gradient-to-r from-brand-red to-brand-darkRed hover:from-brand-darkRed hover:to-brand-red text-white px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider shadow-glow-red hover:shadow-lg transition transform active:scale-95">
+                        Book Flight
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="flex lg:hidden items-center">
+                    <button id="mobileMenuBtn" class="text-brand-navy p-2 rounded-lg hover:bg-slate-100 transition focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 pt-4 pb-6 space-y-4 shadow-xl">
+            <a href="#book" class="block font-semibold text-slate-800 hover:text-brand-red py-2 border-b border-slate-100">Book & Manage</a>
+            <a href="#destinations" class="block font-semibold text-slate-800 hover:text-brand-red py-2 border-b border-slate-100">Where We Fly</a>
+            <a href="#flying-returns" class="block font-semibold text-slate-800 hover:text-brand-red py-2 border-b border-slate-100">Flying Returns Loyalty</a>
+            <a href="#offers" class="block font-semibold text-slate-800 hover:text-brand-red py-2 border-b border-slate-100">Offers & Fares</a>
+            <a href="#experience" class="block font-semibold text-slate-800 hover:text-brand-red py-2 border-b border-slate-100">Inflight Experience</a>
+            <div class="pt-2 flex flex-col space-y-2">
+                <button onclick="toggleModal('loginModal')" class="w-full text-center text-brand-navy border border-brand-navy py-3 rounded-xl font-bold text-sm">
+                    Sign In / Register
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO & INTERACTIVE BOOKING ENGINE -->
+    <section id="book" class="relative min-h-[680px] pt-12 pb-28 px-4 sm:px-6 lg:px-8 flex flex-col justify-center overflow-hidden">
+        <!-- Background Hero Slider Simulation -->
+        <div class="absolute inset-0 z-0">
+            <img id="heroBg" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=80" alt="Air India Flight Background" class="w-full h-full object-cover transition-all duration-1000 scale-105">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+            <!-- Hero Title & Badge -->
+            <div class="text-center md:text-left mb-10 max-w-3xl text-white">
+                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-brand-goldLight mb-4 shadow-sm">
+                    <i class="fa-solid fa-gem text-brand-gold"></i>
+                    <span>Elevated Indian Elegance & Warmth</span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black font-serif tracking-tight leading-tight">
+                    Fly Non-Stop Across The World
+                </h1>
+                <p class="mt-4 text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl">
+                    Discover seamless global connections, award-winning regional dining, and luxury cabin comforts redefining modern aviation.
+                </p>
+            </div>
+
+            <!-- BOOKING ENGINE CARD -->
+            <div class="glass-card rounded-3xl shadow-2xl overflow-hidden border border-white/50 transition-all duration-300">
+                <!-- Tabs Navigation -->
+                <div class="flex flex-wrap border-b border-slate-200/80 bg-slate-900/5 backdrop-blur-md">
+                    <button class="tab-btn active font-bold text-sm px-7 py-4 border-b-2 border-brand-red text-brand-red bg-white flex items-center space-x-2.5 transition-all" onclick="switchTab(this, 'flights')">
+                        <i class="fa-solid fa-plane-departure text-base"></i>
+                        <span>Search Flights</span>
+                    </button>
+                    <button class="tab-btn font-semibold text-sm px-7 py-4 text-slate-600 hover:text-brand-red border-b-2 border-transparent transition-all flex items-center space-x-2.5" onclick="switchTab(this, 'manage')">
+                        <i class="fa-solid fa-suitcase text-base"></i>
+                        <span>Manage Booking</span>
+                    </button>
+                    <button class="tab-btn font-semibold text-sm px-7 py-4 text-slate-600 hover:text-brand-red border-b-2 border-transparent transition-all flex items-center space-x-2.5" onclick="switchTab(this, 'checkin')">
+                        <i class="fa-solid fa-passport text-base"></i>
+                        <span>Web Check-In</span>
+                    </button>
+                    <button class="tab-btn font-semibold text-sm px-7 py-4 text-slate-600 hover:text-brand-red border-b-2 border-transparent transition-all flex items-center space-x-2.5" onclick="switchTab(this, 'statusTab')">
+                        <i class="fa-solid fa-clock-rotate-left text-base"></i>
+                        <span>Flight Status</span>
+                    </button>
+                </div>
+
+                <!-- FLIGHT SEARCH CONTENT -->
+                <div id="flights-content" class="p-6 sm:p-8">
+                    <!-- Radio Trip Type Options -->
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                        <div class="flex items-center space-x-6 bg-slate-100/80 p-1.5 rounded-xl border border-slate-200">
+                            <label class="inline-flex items-center cursor-pointer px-3 py-1.5 rounded-lg text-xs font-bold transition rounded-md" id="lblRound">
+                                <input type="radio" name="tripType" value="round" checked class="hidden" onchange="toggleTripType('round')">
+                                <span class="text-brand-red">Round Trip</span>
+                            </label>
+                            <label class="inline-flex items-center cursor-pointer px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 transition" id="lblOneway">
+                                <input type="radio" name="tripType" value="oneway" class="hidden" onchange="toggleTripType('oneway')">
+                                <span>One Way</span>
+                            </label>
+                            <label class="inline-flex items-center cursor-pointer px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 transition" id="lblMulti">
+                                <input type="radio" name="tripType" value="multicity" class="hidden" onchange="toggleTripType('multicity')">
+                                <span>Multi-City</span>
+                            </label>
+                        </div>
+
+                        <!-- Special Concession Options -->
+                        <div class="flex items-center space-x-3 text-xs font-medium text-slate-600">
+                            <label class="flex items-center space-x-2 cursor-pointer hover:text-brand-red transition">
+                                <input type="checkbox" class="rounded text-brand-red focus:ring-brand-red">
+                                <span>Student Fares</span>
+                            </label>
+                            <span class="text-slate-300">|</span>
+                            <label class="flex items-center space-x-2 cursor-pointer hover:text-brand-red transition">
+                                <input type="checkbox" class="rounded text-brand-red focus:ring-brand-red">
+                                <span>Armed Forces</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Search Form Inputs -->
+                    <form id="flightSearchForm" onsubmit="handleFlightSearch(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3 items-center">
+                            
+                            <!-- From Airport -->
+                            <div class="lg:col-span-3 relative">
+                                <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">Origin</label>
+                                <div class="relative">
+                                    <i class="fa-solid fa-plane-departure absolute left-3.5 top-3.5 text-brand-red"></i>
+                                    <input type="text" id="fromInput" required value="Delhi (DEL)" placeholder="City or Airport" 
+                                           class="w-full pl-10 pr-4 py-3 bg-slate-50/90 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-red font-bold text-slate-800 text-sm shadow-sm transition">
+                                </div>
+                            </div>
+
+                            <!-- Swap Button -->
+                            <div class="hidden lg:flex lg:col-span-1 justify-center items-end pb-1">
+                                <button type="button" onclick="swapAirports()" class="p-3 rounded-full bg-slate-100 hover:bg-brand-red hover:text-white text-slate-600 transition shadow-sm transform hover:rotate-180 duration-300" title="Swap Origin and Destination">
+                                    <i class="fa-solid fa-right-left"></i>
+                                </button>
+                            </div>
+
+                            <!-- To Airport -->
+                            <div class="lg:col-span-3 relative">
+                                <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">Destination</label>
+                                <div class="relative">
+                                    <i class="fa-solid fa-plane-arrival absolute left-3.5 top-3.5 text-brand-navy"></i>
+                                    <input type="text" id="toInput" required value="London Heathrow (LHR)" placeholder="City or Airport" 
+                                           class="w-full pl-10 pr-4 py-3 bg-slate-50/90 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-red font-bold text-slate-800 text-sm shadow-sm transition">
+                                </div>
+                            </div>
+
+                            <!-- Dates -->
+                            <div class="lg:col-span-3 grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">Departure</label>
+                                    <input type="date" id="departDate" required
+                                           class="w-full px-3 py-3 bg-slate-50/90 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-red text-slate-800 font-semibold text-xs sm:text-sm shadow-sm">
+                                </div>
+                                <div id="returnDateContainer">
+                                    <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">Return</label>
+                                    <input type="date" id="returnDate" 
+                                           class="w-full px-3 py-3 bg-slate-50/90 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-red text-slate-800 font-semibold text-xs sm:text-sm shadow-sm">
+                                </div>
+                            </div>
+
+                            <!-- Class Select -->
+                            <div class="lg:col-span-2">
+                                <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">Travelers & Class</label>
+                                <select id="cabinClass" class="w-full px-3 py-3 bg-slate-50/90 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-red text-slate-800 font-bold text-xs sm:text-sm shadow-sm">
+                                    <option value="1-economy">1 Adult, Economy</option>
+                                    <option value="2-economy">2 Adults, Economy</option>
+                                    <option value="1-premium">1 Adult, Premium Eco</option>
+                                    <option value="1-business">1 Adult, Business Class</option>
+                                    <option value="1-first">1 Adult, First Class</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Action Bar -->
+                        <div class="pt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <div class="w-full sm:w-auto flex items-center space-x-2">
+                                <i class="fa-solid fa-ticket-simple text-brand-gold text-lg"></i>
+                                <input type="text" id="promoCode" placeholder="Promo Code (Optional)" class="px-4 py-2 border border-slate-300 rounded-xl text-xs w-full sm:w-56 focus:outline-none focus:ring-2 focus:ring-brand-red bg-white/80">
+                            </div>
+                            <button type="submit" class="w-full sm:w-auto bg-gradient-to-r from-brand-red to-brand-darkRed hover:from-brand-darkRed hover:to-brand-red text-white px-10 py-3.5 rounded-xl font-extrabold text-base shadow-glow-red hover:shadow-xl transition transform active:scale-95 flex items-center justify-center space-x-3">
+                                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                                <span>Search Available Flights</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Secondary Tab: Manage Booking -->
+                <div id="manage-content" class="p-8 hidden">
+                    <h3 class="text-xl font-bold text-brand-navy mb-2">Manage Your Booking</h3>
+                    <p class="text-xs text-slate-500 mb-6">View, select seats, request special meals, or upgrade your cabin class.</p>
+                    <form onsubmit="handleManageSearch(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input type="text" required placeholder="Booking Reference (PNR / Ticket #)" class="p-3.5 border border-slate-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-brand-red">
+                        <input type="text" required placeholder="Last Name" class="p-3.5 border border-slate-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-brand-red">
+                        <button type="submit" class="bg-brand-navy hover:bg-slate-900 text-white font-bold py-3.5 rounded-xl transition shadow">Find My Booking</button>
+                    </form>
+                </div>
+
+                <!-- Secondary Tab: Web Checkin -->
+                <div id="checkin-content" class="p-8 hidden">
+                    <h3 class="text-xl font-bold text-brand-navy mb-2">Online Check-In</h3>
+                    <p class="text-xs text-slate-500 mb-6">Check-in opens 48 hours prior to scheduled departure. Download your digital boarding pass instantly.</p>
+                    <form onsubmit="alert('Redirecting to digital boarding pass generation portal...'); event.preventDefault();" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input type="text" required placeholder="PNR / Booking Reference" class="p-3.5 border border-slate-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-brand-red">
+                        <input type="text" required placeholder="Last Name or Email" class="p-3.5 border border-slate-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-brand-red">
+                        <button type="submit" class="bg-brand-red hover:bg-brand-darkRed text-white font-bold py-3.5 rounded-xl transition shadow">Proceed to Check-In</button>
+                    </form>
+                </div>
+
+                <!-- Secondary Tab: Flight Status -->
+                <div id="statusTab-content" class="p-8 hidden">
+                    <h3 class="text-xl font-bold text-brand-navy mb-2">Check Flight Status</h3>
+                    <p class="text-xs text-slate-500 mb-6">Real-time flight arrival, departure, and gate updates.</p>
+                    <form onsubmit="handleStatusCheck(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input type="text" id="statusFlightNo" required placeholder="Flight Number (e.g. AI 101)" class="p-3.5 border border-slate-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-brand-red">
+                        <input type="date" id="statusDate" required class="p-3.5 border border-slate-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-brand-red">
+                        <button type="submit" class="bg-brand-navy hover:bg-slate-900 text-white font-bold py-3.5 rounded-xl transition shadow">Track Status</button>
+                    </form>
+                    <div id="statusResult" class="mt-6 p-4 bg-slate-100 rounded-xl hidden text-xs">
+                        <!-- Dynamic result inserted here -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE PROMO OFFERS SLIDER/CAROUSEL -->
+    <section id="offers" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-brand-red font-extrabold uppercase text-xs tracking-widest">Exclusive Handpicked Fares</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-serif text-brand-navy mt-1">Special Offers & Deals</h2>
+            </div>
+            <div class="mt-4 md:mt-0 flex items-center space-x-3">
+                <button onclick="scrollOffers(-1)" class="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-brand-red hover:text-white hover:border-brand-red transition shadow-sm">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button onclick="scrollOffers(1)" class="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-brand-red hover:text-white hover:border-brand-red transition shadow-sm">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Offers Horizontal Scroll Container -->
+        <div id="offersContainer" class="flex space-x-6 overflow-x-auto custom-scrollbar pb-6 scroll-smooth snap-x">
+            <!-- Offer 1 -->
+            <div class="min-w-[320px] sm:min-w-[380px] snap-start bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" alt="London Sale" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <span class="absolute top-4 left-4 bg-brand-red text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-md">Non-Stop Special</span>
+                    <span class="absolute bottom-3 left-4 text-white font-bold text-xs"><i class="fa-solid fa-plane-departure text-brand-gold"></i> Delhi to London</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-xl text-slate-900 group-hover:text-brand-red transition">Fly Non-Stop to London Heathrow</h3>
+                        <p class="text-xs text-slate-500 mt-2 leading-relaxed">Experience ultimate comfort with luxury meals and extra legroom on our flagship B787 Dreamliner flights.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
+                        <div>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase">Return Fares From</p>
+                            <p class="text-lg font-extrabold text-brand-navy">₹54,999</p>
+                        </div>
+                        <button onclick="applyPromo('FLYUK')" class="text-xs font-bold text-brand-red bg-red-50 group-hover:bg-brand-red group-hover:text-white px-4 py-2.5 rounded-xl transition shadow-sm">Use: FLYUK</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offer 2 -->
+            <div class="min-w-[320px] sm:min-w-[380px] snap-start bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80" alt="Australia Sale" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <span class="absolute top-4 left-4 bg-brand-navy text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-md">Companion Deal</span>
+                    <span class="absolute bottom-3 left-4 text-white font-bold text-xs"><i class="fa-solid fa-plane-departure text-brand-gold"></i> Australia Routes</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-xl text-slate-900 group-hover:text-brand-red transition">Explore Sydney & Melbourne</h3>
+                        <p class="text-xs text-slate-500 mt-2 leading-relaxed">Book Premium Economy and receive a 25% discount on your companion's airfare.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
+                        <div>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase">Return Fares From</p>
+                            <p class="text-lg font-extrabold text-brand-navy">₹72,400</p>
+                        </div>
+                        <button onclick="applyPromo('AUS25')" class="text-xs font-bold text-brand-navy bg-slate-100 group-hover:bg-brand-navy group-hover:text-white px-4 py-2.5 rounded-xl transition shadow-sm">Use: AUS25</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offer 3 -->
+            <div class="min-w-[320px] sm:min-w-[380px] snap-start bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="Domestic Sale" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <span class="absolute top-4 left-4 bg-brand-gold text-brand-navy text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-md">Domestic Escapes</span>
+                    <span class="absolute bottom-3 left-4 text-white font-bold text-xs"><i class="fa-solid fa-plane-departure text-brand-gold"></i> Across India</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-xl text-slate-900 group-hover:text-brand-red transition">Discover Hidden Gems in India</h3>
+                        <p class="text-xs text-slate-500 mt-2 leading-relaxed">Zero convenience fee on all domestic routes across 50+ vibrant Indian cities.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
+                        <div>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase">One-way Fares From</p>
+                            <p class="text-lg font-extrabold text-brand-navy">₹1,999</p>
+                        </div>
+                        <button onclick="applyPromo('INDIAFIRST')" class="text-xs font-bold text-brand-red bg-red-50 group-hover:bg-brand-red group-hover:text-white px-4 py-2.5 rounded-xl transition shadow-sm">Use: INDIAFIRST</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offer 4 -->
+            <div class="min-w-[320px] sm:min-w-[380px] snap-start bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 flex flex-col group">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80" alt="Dubai Deals" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <span class="absolute top-4 left-4 bg-purple-700 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-md">Middle East Getaways</span>
+                    <span class="absolute bottom-3 left-4 text-white font-bold text-xs"><i class="fa-solid fa-plane-departure text-brand-gold"></i> Mumbai to Dubai</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-xl text-slate-900 group-hover:text-brand-red transition">Dubai Gateway Special</h3>
+                        <p class="text-xs text-slate-500 mt-2 leading-relaxed">Enjoy double Flying Returns points on all flights to Dubai & Abu Dhabi.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
+                        <div>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase">Return Fares From</p>
+                            <p class="text-lg font-extrabold text-brand-navy">₹18,200</p>
+                        </div>
+                        <button onclick="applyPromo('DXBPOINTS')" class="text-xs font-bold text-brand-navy bg-slate-100 group-hover:bg-brand-navy group-hover:text-white px-4 py-2.5 rounded-xl transition shadow-sm">Use: DXBPOINTS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLYING RETURNS / LOYALTY SHOWCASE -->
+    <section id="flying-returns" class="bg-gradient-to-br from-brand-deepPurple via-brand-navy to-slate-900 py-20 text-white relative overflow-hidden">
+        <!-- Floating Ambient Shapes -->
+        <div class="absolute -right-20 -top-20 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-brand-red/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column text -->
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center space-x-2 bg-brand-gold/20 border border-brand-gold/40 text-brand-goldLight px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest mb-4">
+                        <i class="fa-solid fa-crown"></i>
+                        <span>Maharajah Loyalty Club</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold font-serif leading-tight">
+                        Transform Every Journey Into Unmatched Privileges
+                    </h2>
+                    <p class="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Join Flying Returns to earn points across Air India and 25+ global Star Alliance airlines. Unlock priority boarding, luxury lounge access, complimentary baggage, and instant upgrades.
+                    </p>
+
+                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-md">
+                            <div class="text-brand-gold text-2xl font-bold mb-2"><i class="fa-solid fa-coins"></i></div>
+                            <h4 class="font-bold text-sm text-white">Up to 10 Points</h4>
+                            <p class="text-xs text-slate-400 mt-1">Per ₹100 spent on flight bookings.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-md">
+                            <div class="text-brand-gold text-2xl font-bold mb-2"><i class="fa-solid fa-couch"></i></div>
+                            <h4 class="font-bold text-sm text-white">Luxury Lounges</h4>
+                            <p class="text-xs text-slate-400 mt-1">Access to 1,000+ Star Alliance lounges.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-md">
+                            <div class="text-brand-gold text-2xl font-bold mb-2"><i class="fa-solid fa-plane-circle-exclamation"></i></div>
+                            <h4 class="font-bold text-sm text-white">Zero Blackouts</h4>
+                            <p class="text-xs text-slate-400 mt-1">Redeem points on any available seat.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <button onclick="toggleModal('loginModal')" class="bg-gradient-to-r from-brand-gold to-yellow-500 hover:from-yellow-500 hover:to-brand-gold text-brand-navy font-black px-8 py-3.5 rounded-xl shadow-glow-gold transition text-sm">
+                            Join Flying Returns Free
+                        </button>
+                        <a href="#flying-returns" class="border border-white/30 hover:border-white text-white font-semibold px-6 py-3.5 rounded-xl transition text-sm">
+                            Explore Tier Perks
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column Card Showcase -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md bg-gradient-to-tr from-yellow-800 via-brand-gold to-yellow-200 p-8 rounded-3xl shadow-2xl text-slate-900 border border-yellow-100/50 transform hover:scale-105 transition-all duration-500 animate-float relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/20 rounded-full blur-2xl"></div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[10px] font-black uppercase tracking-widest text-slate-800">FLYING RETURNS</p>
+                                <p class="text-2xl font-black font-serif text-brand-navy tracking-wide">MAHARAJAH GOLD</p>
+                            </div>
+                            <div class="w-12 h-12 bg-brand-navy rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-md">
+                                AI
+                            </div>
+                        </div>
+
+                        <div class="mt-14">
+                            <p class="text-[10px] uppercase font-bold text-slate-800 tracking-wider">Member Name</p>
+                            <p class="text-lg font-black tracking-wider uppercase text-brand-navy font-mono">VIKRAMADITYA SINGH</p>
+                        </div>
+
+                        <div class="mt-6 flex justify-between items-end border-t border-slate-900/10 pt-4">
+                            <div>
+                                <p class="text-[9px] uppercase font-bold text-slate-800">Account ID</p>
+                                <p class="text-sm font-mono font-bold">AI-9842-2026</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[10px] font-extrabold bg-brand-navy text-brand-gold px-3 py-1 rounded-full uppercase tracking-wider">STAR ALLIANCE GOLD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INFLIGHT LUXURY & CABIN CLASSES SHOWCASE -->
+    <section id="experience" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-brand-red font-extrabold uppercase text-xs tracking-widest">Inflight Hospitality</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-serif text-brand-navy mt-1">The Air India Experience</h2>
+                <p class="text-slate-600 text-sm mt-3">Reimagining long-haul luxury with authentic Indian hospitality and world-class innovation.</p>
+            </div>
+
+            <!-- Cabin Tabs & Highlights -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Card 1: Gourmet Dining -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-200/80 flex flex-col group">
+                    <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-brand-red group-hover:text-white transition duration-300">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-brand-navy mb-3">Curated Gourmet Dining</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6">
+                        Enjoy bespoke multi-course menus designed by top chefs, featuring authentic regional Indian specialties, fine international cuisine, and sommelier-selected wines.
+                    </p>
+                    <div class="mt-auto pt-4 border-t border-slate-100 text-xs font-bold text-brand-red flex items-center space-x-2">
+                        <span>Explore Menu Options</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2: Vista IFE -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-200/80 flex flex-col group">
+                    <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-brand-red group-hover:text-white transition duration-300">
+                        <i class="fa-solid fa-tv"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-brand-navy mb-3">Air India Vista IFE</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6">
+                        Immerse yourself in 2,500+ hours of global blockbusters, regional cinema, TV shows, podcasts, and high-speed inflight Wi-Fi connectivity.
+                    </p>
+                    <div class="mt-auto pt-4 border-t border-slate-100 text-xs font-bold text-brand-red flex items-center space-x-2">
+                        <span>Browse Inflight Media</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3: A350 Cabin Suites -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all border border-slate-200/80 flex flex-col group">
+                    <div class="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-brand-red group-hover:text-white transition duration-300">
+                        <i class="fa-solid fa-bed"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-brand-navy mb-3">A350 Luxury Suites</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6">
+                        Unwind in private Business Class suites with direct aisle access, sliding privacy doors, lie-flat beds, and mood lighting engineered for total relaxation.
+                    </p>
+                    <div class="mt-auto pt-4 border-t border-slate-100 text-xs font-bold text-brand-red flex items-center space-x-2">
+                        <span>Virtual Cabin Tour</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR DESTINATIONS GRID -->
+    <section id="destinations" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-brand-red font-extrabold uppercase text-xs tracking-widest">Global Network</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-serif text-brand-navy mt-1">Popular Non-Stop Routes</h2>
+            </div>
+            <a href="#book" class="mt-4 md:mt-0 text-brand-red font-bold text-xs uppercase tracking-wider hover:underline flex items-center gap-2">
+                <span>View All 80+ Global Destinations</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- City 1 -->
+            <div class="relative rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 h-80 cursor-pointer" onclick="quickSelectDest('Delhi (DEL)', 'Mumbai (BOM)')">
+                <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=80" alt="Mumbai" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/30 to-transparent p-6 flex flex-col justify-end text-white">
+                    <span class="text-[10px] bg-brand-red text-white font-black uppercase px-2.5 py-1 rounded-full w-max mb-2">12 Flights Daily</span>
+                    <h3 class="font-bold text-2xl">Mumbai (BOM)</h3>
+                    <p class="text-xs text-slate-300 mt-1">Starting from <span class="text-brand-gold font-extrabold">₹2,499</span></p>
+                </div>
+            </div>
+
+            <!-- City 2 -->
+            <div class="relative rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 h-80 cursor-pointer" onclick="quickSelectDest('Delhi (DEL)', 'New York (JFK)')">
+                <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=600&q=80" alt="New York" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/30 to-transparent p-6 flex flex-col justify-end text-white">
+                    <span class="text-[10px] bg-brand-navy text-white font-black uppercase px-2.5 py-1 rounded-full w-max mb-2">Non-Stop Flagship</span>
+                    <h3 class="font-bold text-2xl">New York (JFK)</h3>
+                    <p class="text-xs text-slate-300 mt-1">Starting from <span class="text-brand-gold font-extrabold">₹68,500</span></p>
+                </div>
+            </div>
+
+            <!-- City 3 -->
+            <div class="relative rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 h-80 cursor-pointer" onclick="quickSelectDest('Delhi (DEL)', 'Singapore (SIN)')">
+                <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=600&q=80" alt="Singapore" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/30 to-transparent p-6 flex flex-col justify-end text-white">
+                    <span class="text-[10px] bg-brand-gold text-brand-navy font-black uppercase px-2.5 py-1 rounded-full w-max mb-2">Daily Direct</span>
+                    <h3 class="font-bold text-2xl">Singapore (SIN)</h3>
+                    <p class="text-xs text-slate-300 mt-1">Starting from <span class="text-brand-gold font-extrabold">₹19,800</span></p>
+                </div>
+            </div>
+
+            <!-- City 4 -->
+            <div class="relative rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 h-80 cursor-pointer" onclick="quickSelectDest('Mumbai (BOM)', 'London (LHR)')">
+                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80" alt="London" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/30 to-transparent p-6 flex flex-col justify-end text-white">
+                    <span class="text-[10px] bg-purple-700 text-white font-black uppercase px-2.5 py-1 rounded-full w-max mb-2">A350 Luxury Route</span>
+                    <h3 class="font-bold text-2xl">London (LHR)</h3>
+                    <p class="text-xs text-slate-300 mt-1">Starting from <span class="text-brand-gold font-extrabold">₹54,999</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gradient-to-b from-brand-navy via-slate-950 to-brand-deepPurple text-slate-300 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 pb-12 border-b border-slate-800 text-xs">
+                
+                <!-- Col 1 -->
+                <div>
+                    <h4 class="text-white font-extrabold text-sm mb-4 uppercase tracking-wider font-serif">Book & Travel</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="hover:text-brand-gold transition">Flight Schedules</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Cargo & Logistics</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Web Check-In</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Seat Selection</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Excess Baggage</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="text-white font-extrabold text-sm mb-4 uppercase tracking-wider font-serif">Destinations</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="hover:text-brand-gold transition">Global Route Map</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Non-Stop Routes</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Star Alliance Network</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Codeshare Partners</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="text-white font-extrabold text-sm mb-4 uppercase tracking-wider font-serif">Flying Returns</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="hover:text-brand-gold transition">About Loyalty Program</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Earn & Redeem Points</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Tier Levels & Benefits</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Claim Retro Miles</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="text-white font-extrabold text-sm mb-4 uppercase tracking-wider font-serif">Corporate</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="hover:text-brand-gold transition">About Air India</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Fleet Overview</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Press & News</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Careers at AI</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Sustainability</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 5 -->
+                <div>
+                    <h4 class="text-white font-extrabold text-sm mb-4 uppercase tracking-wider font-serif">Help & Support</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="hover:text-brand-gold transition">24/7 Contact Center</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Baggage Allowance</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Refund Status</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Special Assistance</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Grievance Cell</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright & Socials -->
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-brand-red text-white font-bold flex items-center justify-center rounded-lg">AI</div>
+                    <p>© 2026 Air India Limited. Modern UI Replica.</p>
+                </div>
+
+                <div class="flex items-center space-x-6 text-slate-300">
+                    <a href="#" class="hover:text-brand-gold transition text-base"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition text-base"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition text-base"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition text-base"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+
+                <div class="flex space-x-4 text-[11px]">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Conditions of Carriage</a>
+                    <a href="#" class="hover:underline">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SIGN IN MODAL -->
+    <div id="loginModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100">
+            <button onclick="toggleModal('loginModal')" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-gradient-to-tr from-brand-darkRed to-brand-red text-white font-black text-2xl flex items-center justify-center rounded-2xl mx-auto mb-3 shadow-glow-red">
+                    AI
+                </div>
+                <h3 class="text-2xl font-bold font-serif text-brand-navy">Welcome to Air India</h3>
+                <p class="text-xs text-slate-500 mt-1">Sign in to manage your Flying Returns account & flights.</p>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('Successfully logged in!'); toggleModal('loginModal');" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Email or Flying Returns ID</label>
+                    <input type="text" required placeholder="member@airindia.com" class="w-full p-3.5 border border-slate-300 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+                    <input type="password" required placeholder="••••••••" class="w-full p-3.5 border border-slate-300 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-red">
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                    <label class="flex items-center space-x-1.5 text-slate-600">
+                        <input type="checkbox" class="rounded text-brand-red focus:ring-brand-red">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="text-brand-red font-bold hover:underline">Forgot password?</a>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-brand-red to-brand-darkRed text-white py-3.5 rounded-xl font-bold text-sm shadow-glow-red hover:shadow-lg transition">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="mt-6 pt-4 border-t border-slate-100 text-center text-xs text-slate-500">
+                New flyer? <a href="#" class="text-brand-red font-bold hover:underline">Join Flying Returns Free</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT INTERACTION LOGIC -->
+    <script>
+        // Set default dates dynamically
+        window.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            const nextWeek = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+            
+            const departInput = document.getElementById('departDate');
+            const returnInput = document.getElementById('returnDate');
+            
+            if (departInput) {
+                departInput.value = today;
+                departInput.min = today;
+            }
+            if (returnInput) {
+                returnInput.value = nextWeek;
+                returnInput.min = today;
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search Engine Tab Switcher
+        function switchTab(btn, tabId) {
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active', 'border-brand-red', 'text-brand-red', 'bg-white', 'font-bold');
+                b.classList.add('border-transparent', 'text-slate-600', 'font-semibold');
+            });
+            btn.classList.add('active', 'border-brand-red', 'text-brand-red', 'bg-white', 'font-bold');
+            btn.classList.remove('border-transparent', 'text-slate-600', 'font-semibold');
+
+            ['flights', 'manage', 'checkin', 'statusTab'].forEach(id => {
+                const el = document.getElementById(id + '-content');
+                if (el) el.classList.add('hidden');
+            });
+            const activeEl = document.getElementById(tabId + '-content');
+            if (activeEl) activeEl.classList.remove('hidden');
+        }
+
+        // Toggle Trip Type Radio logic
+        function toggleTripType(type) {
+            const returnContainer = document.getElementById('returnDateContainer');
+            const lblRound = document.getElementById('lblRound');
+            const lblOneway = document.getElementById('lblOneway');
+            const lblMulti = document.getElementById('lblMulti');
+
+            [lblRound, lblOneway, lblMulti].forEach(lbl => {
+                lbl.classList.remove('bg-white', 'shadow-sm', 'text-brand-red', 'font-bold');
+                lbl.classList.add('text-slate-600', 'font-semibold');
+            });
+
+            if (type === 'round') {
+                lblRound.classList.add('bg-white', 'shadow-sm', 'text-brand-red', 'font-bold');
+                returnContainer.style.opacity = '1';
+                returnContainer.querySelector('input').disabled = false;
+            } else {
+                if (type === 'oneway') lblOneway.classList.add('bg-white', 'shadow-sm', 'text-brand-red', 'font-bold');
+                if (type === 'multicity') lblMulti.classList.add('bg-white', 'shadow-sm', 'text-brand-red', 'font-bold');
+                returnContainer.style.opacity = '0.3';
+                returnContainer.querySelector('input').disabled = true;
+            }
+        }
+
+        // Swap Airports
+        function swapAirports() {
+            const from = document.getElementById('fromInput');
+            const to = document.getElementById('toInput');
+            const temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+
+        // Quick select destination
+        function quickSelectDest(from, to) {
+            document.getElementById('fromInput').value = from;
+            document.getElementById('toInput').value = to;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Apply Promo Code
+        function applyPromo(code) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const promoInput = document.getElementById('promoCode');
+            if(promoInput) {
+                promoInput.value = code;
+                promoInput.focus();
+                promoInput.classList.add('ring-2', 'ring-brand-gold');
+            }
+        }
+
+        // Scroll Offers Carousel
+        function scrollOffers(direction) {
+            const container = document.getElementById('offersContainer');
+            container.scrollBy({ left: direction * 350, behavior: 'smooth' });
+        }
+
+        // Form Handlers
+        function handleFlightSearch(e) {
+            e.preventDefault();
+            const from = document.getElementById('fromInput').value;
+            const to = document.getElementById('toInput').value;
+            const depart = document.getElementById('departDate').value;
+            alert(`🔍 Flight Search Initiated:\n• Origin: ${from}\n• Destination: ${to}\n• Date: ${depart}\n\nRedirecting to real-time seat availability...`);
+        }
+
+        function handleManageSearch(e) {
+            e.preventDefault();
+            alert(`🔍 Retrieving Booking Details...\nPlease wait while we load your itinerary.`);
+        }
+
+        function handleStatusCheck(e) {
+            e.preventDefault();
+            const flightNo = document.getElementById('statusFlightNo').value;
+            const statusResult = document.getElementById('statusResult');
+            statusResult.classList.remove('hidden');
+            statusResult.innerHTML = `
+                <div class="flex justify-between items-center bg-emerald-50 text-emerald-800 p-3 rounded-lg border border-emerald-200">
+                    <div>
+                        <span class="font-extrabold text-sm">${flightNo.toUpperCase()} - ON TIME</span>
+                        <p class="text-[11px] text-emerald-600">Delhi (DEL) ✈ London Heathrow (LHR)</p>
+                    </div>
+                    <span class="bg-emerald-600 text-white font-bold px-2.5 py-1 rounded text-[10px]">Gate 14B</span>
+                </div>
+            `;
+        }
+
+        // Modal toggle
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navbar Assignment</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: white;
+    padding: 30px 7%;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 30px 0 15px;
+}
+
+/* 1. WhatsApp Navbar */
+
+.whatsapp {
+    background: #111b21;
+    color: white;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    justify-content: space-between;
+    border-radius: 3px;
+}
+
+.whatsapp-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.whatsapp-icon {
+    background: #075e54;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.whatsapp-info h4 {
+    font-size: 13px;
+}
+
+.whatsapp-info p {
+    font-size: 10px;
+    color: #b5c0c5;
+    margin-top: 4px;
+}
+
+.whatsapp-right {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.whatsapp-right i {
+    cursor: pointer;
+}
+
+/* 2. LinkedIn Navbar */
+
+.linkedin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 5%;
+    border-bottom: 2px solid #eee;
+    color: #666;
+}
+
+.linkedin-logo {
+    background: #0a66c2;
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 0px 4px;
+    border-radius: 3px;
+}
+
+.linkedin-search {
+    background: #edf3f8;
+    padding: 9px 12px;
+    border-radius: 5px;
+    width: 180px;
+    font-size: 13px;
+}
+
+.linkedin-menu {
+    display: flex;
+    gap: 28px;
+    text-align: center;
+}
+
+.linkedin-menu div {
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.linkedin-menu i {
+    display: block;
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+.linkedin-menu div:hover {
+    color: black;
+}
+
+/* 3. BookMyShow Navbar */
+
+.bms {
+    border-bottom: 1px solid #eee;
+}
+
+.bms-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 10%;
+}
+
+.bms-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.bms-logo span {
+    color: #f84464;
+}
+
+.bms-search {
+    width: 55%;
+    border: 1px solid #eee;
+    padding: 10px;
+    color: #888;
+    font-size: 12px;
+}
+
+.bms-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 12px;
+}
+
+.signin {
+    background: #f84464;
+    color: white;
+    padding: 8px 17px;
+    border-radius: 5px;
+    border: none;
+}
+
+.bms-bottom {
+    background: #f5f5f5;
+    padding: 12px 10%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.bms-bottom a {
+    text-decoration: none;
+    color: #555;
+}
+
+/* 4. Wisdom Sprouts Navbar */
+
+.wisdom {
+    background: #d3e9e7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+}
+
+.wisdom-logo {
+    color: #247b79;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.wisdom-menu {
+    display: flex;
+    gap: 18px;
+}
+
+.wisdom-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 12px;
+}
+
+.wisdom-menu a:first-child {
+    color: #f07845;
+}
+
+.contact-btn {
+    background: #ff713c;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 18px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+/* 5. Instagram Footer */
+
+.instagram-footer {
+    background: #0c1214;
+    color: #999;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+.insta-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-bottom: 15px;
+}
+
+.insta-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+.insta-links a:hover {
+    color: white;
+}
+
+.instagram-footer p {
+    font-size: 10px;
+}
+
+/* Responsive Design */
+
+@media(max-width: 768px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .linkedin {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .linkedin-menu {
+        width: 100%;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    .bms-top {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .bms-search {
+        width: 100%;
+    }
+
+    .bms-bottom {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 12px;
+    }
+
+    .wisdom {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .wisdom-menu {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .whatsapp-info p {
+        max-width: 200px;
+        overflow: hidden;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 1. WhatsApp Navbar -->
+
+<h3>WhatsApp Navbar</h3>
+
+<nav class="whatsapp">
+    <div class="whatsapp-left">
+        <div class="whatsapp-icon">
+            <i class="fa-solid fa-users"></i>
+        </div>
+
+        <div class="whatsapp-info">
+            <h4>B101-WS-MERN-JFP</h4>
+            <p>B101, B101Kothrud, B87, Swargate, WS, VS, +91 755 869 3115</p>
+        </div>
+    </div>
+
+    <div class="whatsapp-right">
+        <i class="fa-solid fa-circle-plus"></i>
+        <i class="fa-solid fa-video"></i>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+    </div>
+</nav>
+
+
+<!-- 2. LinkedIn Navbar -->
+
+<h3>LinkedIn Navbar</h3>
+
+<nav class="linkedin">
+
+    <div class="linkedin-logo">in</div>
+
+    <div class="linkedin-search">
+        <i class="fa-solid fa-magnifying-glass"></i> Search
+    </div>
+
+    <div class="linkedin-menu">
+
+        <div>
+            <i class="fa-solid fa-house"></i>
+            Home
+        </div>
+
+        <div>
+            <i class="fa-solid fa-user-group"></i>
+            My Network
+        </div>
+
+        <div>
+            <i class="fa-solid fa-briefcase"></i>
+            Jobs
+        </div>
+
+        <div>
+            <i class="fa-solid fa-comment-dots"></i>
+            Messaging
+        </div>
+
+        <div>
+            <i class="fa-solid fa-bell"></i>
+            Notifications
+        </div>
+
+        <div>
+            <i class="fa-solid fa-user-circle"></i>
+            Me
+        </div>
+
+        <div>
+            <i class="fa-solid fa-grip"></i>
+            For Business
+        </div>
+
+        <div>
+            <i class="fa-solid fa-square"></i>
+            Premium
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- 3. BookMyShow Navbar -->
+
+<h3>Book My Show Navbar</h3>
+
+<nav class="bms">
+
+    <div class="bms-top">
+
+        <div class="bms-logo">
+            book<span>my</span>show
+        </div>
+
+        <div class="bms-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Search for Movies, Events, Plays, Sports and Activities
+        </div>
+
+        <div class="bms-right">
+            <span>Pune <i class="fa-solid fa-location-dot"></i></span>
+            <button class="signin">Sign In</button>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </div>
+
+    <div class="bms-bottom">
+        <div>
+            <a href="#">Movies</a>&nbsp;&nbsp;
+            <a href="#">Stream</a>&nbsp;&nbsp;
+            <a href="#">Events</a>&nbsp;&nbsp;
+            <a href="#">Plays</a>&nbsp;&nbsp;
+            <a href="#">Sports</a>&nbsp;&nbsp;
+            <a href="#">Activities</a>
+        </div>
+
+        <div>
+            <a href="#">ListYourShow</a>&nbsp;&nbsp;
+            <a href="#">Corporates</a>&nbsp;&nbsp;
+            <a href="#">Offers</a>&nbsp;&nbsp;
+            <a href="#">Gift Cards</a>
+        </div>
+    </div>
+
+</nav>
+
+
+<!-- 4. Wisdom Sprouts Navbar -->
+
+<h3>Wisdom Sprouts Navbar</h3>
+
+<nav class="wisdom">
+
+    <div class="wisdom-logo">
+        WISDOM SPROUTS
+        <br>
+        <small>IT Training Institute</small>
+    </div>
+
+    <div class="wisdom-menu">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Courses</a>
+        <a href="#">Blogs</a>
+        <a href="#">Placements</a>
+        <a href="#">Internship</a>
+        <a href="#">Gallery</a>
+        <a href="#">Hire From Us</a>
+    </div>
+
+    <button class="contact-btn">Contact Us</button>
+
+</nav>
+
+
+<!-- 5. Instagram Footer -->
+
+<h3>Instagram Footer</h3>
+
+<footer class="instagram-footer">
+
+    <div class="insta-links">
+        <a href="#">Meta</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Jobs</a>
+        <a href="#">Help</a>
+        <a href="#">API</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Locations</a>
+        <a href="#">Instagram Lite</a>
+        <a href="#">Threads</a>
+        <a href="#">Contact Uploading & Non-Users</a>
+    </div>
+
+    <p>English &nbsp; © 2026 Instagram from Meta</p>
+
+</footer>
+
+</body>
+</html>

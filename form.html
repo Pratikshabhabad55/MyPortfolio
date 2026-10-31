@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Application Form</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #dbeafe, #e9e4ff);
+    padding: 30px 15px;
+}
+
+.container {
+    max-width: 750px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+}
+
+h1 {
+    text-align: center;
+    color: #2456a6;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+h3 {
+    color: #2456a6;
+    margin: 20px 0 15px;
+    border-bottom: 2px solid #e5eaf5;
+    padding-bottom: 8px;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.field {
+    flex: 1;
+    margin-bottom: 17px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #2456a6;
+    box-shadow: 0 0 4px #9bb8e8;
+}
+
+textarea {
+    height: 90px;
+    resize: vertical;
+}
+
+.gender {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.gender label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+}
+
+.gender input {
+    width: auto;
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0;
+    font-size: 13px;
+}
+
+.terms input {
+    width: auto;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit {
+    background: #2456a6;
+    color: white;
+}
+
+.reset {
+    background: #e5e7eb;
+    color: #333;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+#result {
+    text-align: center;
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+}
+
+@media(max-width: 600px) {
+    .row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Internship Application Form</h1>
+<p class="subtitle">Apply for your dream internship opportunity!</p>
+
+<form id="myForm">
+
+<h3>Personal Information</h3>
+
+<div class="row">
+<div class="field">
+<label>Full Name *</label>
+<input type="text" name="name"
+placeholder="Enter your full name" required>
+</div>
+
+<div class="field">
+<label>Email Address *</label>
+<input type="email" name="email"
+placeholder="Enter your email" required>
+</div>
+</div>
+
+<div class="row">
+<div class="field">
+<label>Mobile Number *</label>
+<input type="tel" name="mobile"
+placeholder="10 digit mobile number"
+pattern="[6-9][0-9]{9}" maxlength="10" required>
+</div>
+
+<div class="field">
+<label>Date of Birth</label>
+<input type="date" name="dob">
+</div>
+</div>
+
+<div class="field">
+<label>Gender</label>
+<div class="gender">
+<label><input type="radio" name="gender" value="Female"> Female</label>
+<label><input type="radio" name="gender" value="Male"> Male</label>
+<label><input type="radio" name="gender" value="Other"> Other</label>
+</div>
+</div>
+
+<h3>Educational Details</h3>
+
+<div class="row">
+<div class="field">
+<label>College Name *</label>
+<input type="text" name="college"
+placeholder="Enter college name" required>
+</div>
+
+<div class="field">
+<label>Degree *</label>
+<select name="degree" required>
+<option value="">Select Degree</option>
+<option>BE / BTech</option>
+<option>BCA</option>
+<option>BSc</option>
+<option>BCom</option>
+<option>MCA</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+<div class="field">
+<label>Branch</label>
+<input type="text" name="branch"
+placeholder="Computer Engineering">
+</div>
+
+<div class="field">
+<label>Current Year *</label>
+<select name="year" required>
+<option value="">Select Year</option>
+<option>First Year</option>
+<option>Second Year</option>
+<option>Third Year</option>
+<option>Final Year</option>
+<option>Graduate</option>
+</select>
+</div>
+</div>
+
+<h3>Internship Details</h3>
+
+<div class="row">
+<div class="field">
+<label>Internship Role *</label>
+<select name="role" required>
+<option value="">Select Role</option>
+<option>Web Development</option>
+<option>Java Full Stack Development</option>
+<option>Python Development</option>
+<option>Data Science</option>
+<option>AI / ML</option>
+<option>UI / UX Design</option>
+</select>
+</div>
+
+<div class="field">
+<label>Internship Mode *</label>
+<select name="mode" required>
+<option value="">Select Mode</option>
+<option>Online</option>
+<option>Offline</option>
+<option>Hybrid</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+<div class="field">
+<label>Duration</label>
+<select name="duration">
+<option value="">Select Duration</option>
+<option>1 Month</option>
+<option>2 Months</option>
+<option>3 Months</option>
+<option>6 Months</option>
+</select>
+</div>
+
+<div class="field">
+<label>Available Start Date</label>
+<input type="date" name="startDate">
+</div>
+</div>
+
+<div class="field">
+<label>Skills</label>
+<input type="text" name="skills"
+placeholder="HTML, CSS, Java, Python etc.">
+</div>
+
+<div class="field">
+<label>GitHub / Portfolio Link</label>
+<input type="url" name="github"
+placeholder="https://github.com/username">
+</div>
+
+<div class="field">
+<label>Why do you want this internship?</label>
+<textarea name="reason"
+placeholder="Write about your goals and interests..."></textarea>
+</div>
+
+<div class="terms">
+<input type="checkbox" id="agree" required>
+<label for="agree">I confirm that all information is correct.</label>
+</div>
+
+<div class="buttons">
+<button type="submit" class="submit">
+Submit Application
+</button>
+
+<button type="reset" class="reset">
+Reset Form
+</button>
+</div>
+
+<p id="result"></p>
+
+</form>
+</div>
+
+<script>
+const form = document.getElementById("myForm");
+const result = document.getElementById("result");
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    if (!form.reportValidity()) {
+        return;
+    }
+
+    result.textContent =
+        "Congratulations! Your application submitted successfully.";
+
+    form.reset();
+});
+
+form.addEventListener("reset", function() {
+    result.textContent = "";
+});
+</script>
+
+</body>
+</html>

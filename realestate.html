@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EstatePro - Real Estate Website</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f8faf9;
+    color: #222;
+}
+
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #174c43;
+}
+
+.logo span {
+    color: #d9a441;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: #d9a441;
+}
+
+.nav-btn {
+    background: #174c43;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 540px;
+    background:
+    linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.48)),
+    url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600")
+    center/cover;
+    display: flex;
+    align-items: center;
+    padding: 60px 9%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 620px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.hero button {
+    background: #d9a441;
+    color: white;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* SEARCH BOX */
+
+.search-container {
+    max-width: 1050px;
+    margin: -45px auto 60px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.1);
+    position: relative;
+}
+
+.search-container h2 {
+    color: #174c43;
+    margin-bottom: 18px;
+}
+
+.search-box {
+    display: flex;
+    gap: 15px;
+}
+
+.search-box select {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.search-box button {
+    background: #174c43;
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* COMMON SECTION */
+
+.section {
+    padding: 65px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    font-size: 34px;
+    color: #174c43;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: #777;
+    font-size: 15px;
+}
+
+/* PROPERTY CARDS */
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.property-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+    transition: .3s;
+}
+
+.property-card:hover {
+    transform: translateY(-8px);
+}
+
+.property-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.property-info {
+    padding: 20px;
+}
+
+.property-info h3 {
+    color: #174c43;
+    margin-bottom: 10px;
+}
+
+.property-info p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.price {
+    color: #d9a441 !important;
+    font-size: 22px !important;
+    font-weight: bold;
+}
+
+.property-details {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+.property-info button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #174c43;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ABOUT SECTION */
+
+.about {
+    background: #eaf1ee;
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.about img {
+    width: 48%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    color: #174c43;
+    font-size: 35px;
+    margin-bottom: 18px;
+}
+
+.about-content p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.about-content button {
+    background: #174c43;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* SERVICES */
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    text-align: center;
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
+
+.service-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    color: #174c43;
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* TESTIMONIAL */
+
+.testimonial {
+    background: #174c43;
+    color: white;
+    text-align: center;
+    padding: 65px 12%;
+}
+
+.testimonial h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.testimonial p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #e4ece9;
+    max-width: 700px;
+    margin: auto;
+}
+
+.testimonial h4 {
+    color: #e5b85c;
+    margin-top: 20px;
+}
+
+/* CONTACT */
+
+.contact-form {
+    max-width: 650px;
+    margin: auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 17px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.contact-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 14px;
+    background: #174c43;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    background: #102f2b;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+footer h2 {
+    color: #e5b85c;
+    margin-bottom: 12px;
+}
+
+footer p {
+    font-size: 13px;
+    line-height: 2;
+    color: #ccc;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 768px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+    .about img {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">Estate<span>Pro.</span></div>
+
+    <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#properties">Properties</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="nav-btn"
+    onclick="document.getElementById('contact').scrollIntoView()">
+    Get Started
+    </button>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>Find Your Perfect Place To Call Home</h1>
+
+        <p>
+            Discover beautiful homes, modern apartments and
+            luxury properties. We help you find the perfect
+            property that matches your lifestyle.
+        </p>
+
+        <button onclick="document.getElementById('properties').scrollIntoView()">
+            Explore Properties
+        </button>
+
+    </div>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="search-container">
+
+    <h2>Find Your Dream Property</h2>
+
+    <div class="search-box">
+
+        <select id="propertyType">
+            <option value="">Property Type</option>
+            <option>Apartment</option>
+            <option>Villa</option>
+            <option>House</option>
+        </select>
+
+        <select id="city">
+            <option value="">Select City</option>
+            <option>Pune</option>
+            <option>Mumbai</option>
+            <option>Nashik</option>
+        </select>
+
+        <select id="budget">
+            <option value="">Select Budget</option>
+            <option>Below 50 Lakhs</option>
+            <option>50 Lakhs - 1 Crore</option>
+            <option>Above 1 Crore</option>
+        </select>
+
+        <button onclick="searchProperty()">Search</button>
+
+    </div>
+
+</section>
+
+<!-- PROPERTIES -->
+
+<section class="section" id="properties">
+
+    <div class="section-heading">
+        <h2>Featured Properties</h2>
+        <p>Explore our handpicked collection of beautiful properties.</p>
+    </div>
+
+    <div class="property-grid" id="propertyGrid">
+
+        <div class="property-card"
+        data-type="Villa" data-city="Pune"
+        data-budget="Above 1 Crore">
+
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700" alt="Luxury villa">
+
+            <div class="property-info">
+                <h3>Luxury Modern Villa</h3>
+                <p>📍 Pune, Maharashtra</p>
+                <p class="price">₹1.5 Crore</p>
+
+                <div class="property-details">
+                    <span>🛏 4 Beds</span>
+                    <span>🛁 3 Baths</span>
+                    <span>2500 Sq.ft</span>
+                </div>
+
+                <button onclick="viewProperty('Luxury Modern Villa','Pune','₹1.5 Crore')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <div class="property-card"
+        data-type="Apartment" data-city="Mumbai"
+        data-budget="Above 1 Crore">
+
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700" alt="Modern apartment">
+
+            <div class="property-info">
+                <h3>Modern City Apartment</h3>
+                <p>📍 Mumbai, Maharashtra</p>
+                <p class="price">₹1.2 Crore</p>
+
+                <div class="property-details">
+                    <span>🛏 3 Beds</span>
+                    <span>🛁 2 Baths</span>
+                    <span>1800 Sq.ft</span>
+                </div>
+
+                <button onclick="viewProperty('Modern City Apartment','Mumbai','₹1.2 Crore')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <div class="property-card"
+        data-type="House" data-city="Nashik"
+        data-budget="50 Lakhs - 1 Crore">
+
+            <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=700" alt="Family house">
+
+            <div class="property-info">
+                <h3>Beautiful Family House</h3>
+                <p>📍 Nashik, Maharashtra</p>
+                <p class="price">₹85 Lakhs</p>
+
+                <div class="property-details">
+                    <span>🛏 3 Beds</span>
+                    <span>🛁 2 Baths</span>
+                    <span>1600 Sq.ft</span>
+                </div>
+
+                <button onclick="viewProperty('Beautiful Family House','Nashik','₹85 Lakhs')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <div class="property-card"
+        data-type="Apartment" data-city="Pune"
+        data-budget="Below 50 Lakhs">
+
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=700" alt="Apartment">
+
+            <div class="property-info">
+                <h3>Elegant Apartment</h3>
+                <p>📍 Pune, Maharashtra</p>
+                <p class="price">₹45 Lakhs</p>
+
+                <div class="property-details">
+                    <span>🛏 2 Beds</span>
+                    <span>🛁 1 Bath</span>
+                    <span>950 Sq.ft</span>
+                </div>
+
+                <button onclick="viewProperty('Elegant Apartment','Pune','₹45 Lakhs')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <div class="property-card"
+        data-type="Villa" data-city="Mumbai"
+        data-budget="Above 1 Crore">
+
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=700" alt="Premium villa">
+
+            <div class="property-info">
+                <h3>Premium Luxury Villa</h3>
+                <p>📍 Mumbai, Maharashtra</p>
+                <p class="price">₹2 Crore</p>
+
+                <div class="property-details">
+                    <span>🛏 5 Beds</span>
+                    <span>🛁 4 Baths</span>
+                    <span>3000 Sq.ft</span>
+                </div>
+
+                <button onclick="viewProperty('Premium Luxury Villa','Mumbai','₹2 Crore')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <div class="property-card"
+        data-type="House" data-city="Nashik"
+        data-budget="Below 50 Lakhs">
+
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700" alt="Modern home">
+
+            <div class="property-info">
+                <h3>Modern Family Home</h3>
+                <p>📍 Nashik, Maharashtra</p>
+                <p class="price">₹40 Lakhs</p>
+
+                <div class="property-details">
+                    <span>🛏 2 Beds</span>
+                    <span>🛁 1 Bath</span>
+                    <span>1100 Sq.ft</span>
+                </div>
+
+                <button onclick="viewProperty('Modern Family Home','Nashik','₹40 Lakhs')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <p id="noResults" style="display:none;text-align:center;margin-top:25px;color:#b33;">
+        No properties found. Please change your search filters.
+    </p>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="section about" id="about">
+
+    <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=900" alt="Beautiful home interior">
+
+    <div class="about-content">
+
+        <h2>Welcome To EstatePro</h2>
+
+        <p>
+            EstatePro is a modern real estate platform designed
+            to help customers discover their dream properties.
+            We offer a simple and convenient property search experience.
+        </p>
+
+        <p>
+            Whether you are looking for a beautiful home,
+            a luxury villa or a modern apartment, we are here
+            to help you find the right place.
+        </p>
+
+        <button onclick="document.getElementById('contact').scrollIntoView()">
+            Learn More
+        </button>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="section" id="services">
+
+    <div class="section-heading">
+        <h2>Our Services</h2>
+        <p>We provide complete real estate solutions.</p>
+    </div>
+
+    <div class="service-grid">
+
+        <div class="service-card">
+            <div class="service-icon">🏡</div>
+            <h3>Buy Property</h3>
+            <p>Find your dream home from our collection of properties.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🔑</div>
+            <h3>Rent Property</h3>
+            <p>Discover comfortable rental homes at affordable prices.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🏢</div>
+            <h3>Sell Property</h3>
+            <p>Get assistance to sell your property with confidence.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TESTIMONIAL -->
+
+<section class="testimonial">
+
+    <h2>What Our Clients Say</h2>
+
+    <p>
+        "EstatePro made finding our dream home simple and stress-free.
+        The property options were excellent, and the overall experience
+        was smooth and convenient."
+    </p>
+
+    <h4>— Happy Customer</h4>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+
+    <div class="section-heading">
+        <h2>Get In Touch</h2>
+        <p>Have questions? Send us a message.</p>
+    </div>
+
+    <div class="contact-form">
+
+        <form id="contactForm">
+
+            <input type="text" placeholder="Enter Your Name" required>
+
+            <input type="email" placeholder="Enter Your Email" required>
+
+            <input type="tel" placeholder="Enter Mobile Number"
+            pattern="[0-9]{10}" maxlength="10" required>
+
+            <textarea placeholder="Write Your Message" required></textarea>
+
+            <button type="submit">Send Message</button>
+
+            <p id="successMessage"
+            style="text-align:center;color:green;margin-top:15px;"></p>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>EstatePro.</h2>
+
+    <p>Find Your Dream Home With Us</p>
+
+    <p>Home | Properties | About | Services | Contact</p>
+
+    <p>© 2026 EstatePro. All Rights Reserved.</p>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function searchProperty() {
+
+    const type = document.getElementById("propertyType").value;
+    const city = document.getElementById("city").value;
+    const budget = document.getElementById("budget").value;
+
+    const cards = document.querySelectorAll(".property-card");
+    let count = 0;
+
+    cards.forEach(card => {
+
+        const matchType = !type || card.dataset.type === type;
+        const matchCity = !city || card.dataset.city === city;
+        const matchBudget = !budget || card.dataset.budget === budget;
+
+        if(matchType && matchCity && matchBudget) {
+            card.style.display = "block";
+            count++;
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+    document.getElementById("noResults").style.display =
+        count === 0 ? "block" : "none";
+
+    document.getElementById("properties").scrollIntoView();
+}
+
+function viewProperty(name, city, price) {
+    alert(
+        "Property Name: " + name +
+        "\nLocation: " + city +
+        "\nPrice: " + price
+    );
+}
+
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    document.getElementById("successMessage").textContent =
+        "Thank you! Your message has been submitted successfully.";
+
+    this.reset();
+
+});
+
+</script>
+
+</body>
+</html>

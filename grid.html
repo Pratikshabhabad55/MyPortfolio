@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Layout with Implicit Grid</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Grid Container */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        /* Individual Card */
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h2 {
+            color: #2456a6;
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .card button {
+            margin-top: 15px;
+            padding: 10px 18px;
+            background-color: #2456a6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #173f80;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Card Layout with Implicit Grid</h1>
+    <p class="subtitle">Explore our beautiful collection of cards</p>
+
+    <div class="card-container">
+
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600" alt="Nature">
+            <div class="card-content">
+                <h2>Nature</h2>
+                <p>Nature gives us fresh air, beautiful landscapes and a peaceful environment.</p>
+                <button type="button">Read More</button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=600" alt="Technology">
+            <div class="card-content">
+                <h2>Technology</h2>
+                <p>Technology makes our lives easier through innovation and modern solutions.</p>
+                <button type="button">Read More</button>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Beach">
+            <div class="card-content">
+                <h2>Travel</h2>
+                <p>Travel helps us discover new places, cultures and unforgettable experiences.</p>
+                <button type="button">Read More</button>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600" alt="Coding">
+            <div class="card-content">
+                <h2>Programming</h2>
+                <p>Programming allows us to build websites, applications and creative solutions.</p>
+                <button type="button">Read More</button>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600" alt="People">
+            <div class="card-content">
+                <h2>Lifestyle</h2>
+                <p>A healthy lifestyle includes good habits, fitness and a positive mindset.</p>
+                <button type="button">Read More</button>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600" alt="Food">
+            <div class="card-content">
+                <h2>Healthy Food</h2>
+                <p>Healthy food provides essential nutrients and keeps our body strong.</p>
+                <button type="button">Read More</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
